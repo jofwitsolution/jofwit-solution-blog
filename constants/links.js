@@ -50,3 +50,26 @@ export const navLinks = [
     icon: "/images/icons/terms.svg",
   },
 ];
+
+export const socialLinks = [
+  {
+    label: "X",
+    href: "https://www.x.com",
+    icon: "/images/icons/x.svg",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com",
+    icon: "/images/icons/facebook.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com",
+    icon: "/images/icons/instagram.svg",
+  },
+  {
+    label: "Github",
+    href: "https://www.github.com",
+    icon: "/images/icons/github.svg",
+  },
+];

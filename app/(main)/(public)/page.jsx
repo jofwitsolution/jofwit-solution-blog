@@ -1,3 +1,4 @@
+import Posts from "@/components/Posts";
 import LeftSideMenu from "@/components/shared/navigation/LeftSideMenu";
 
 export default function Home() {
@@ -7,7 +8,9 @@ export default function Home() {
         <div className="flex-[25%]">
           <LeftSideMenu />
         </div>
-        <div className="bg-blue-300 flex-[50%]">dddd</div>
+        <div className="bg-blue-300 flex-[50%]">
+          <Posts />
+        </div>
         <div className="bg-slate-300 flex-[25%]">wwwww</div>
       </div>
     </div>
