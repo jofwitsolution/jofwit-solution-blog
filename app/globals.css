@@ -14,3 +14,9 @@
     @apply max-w-[1300px] mx-auto px-[24px];
   }
 }
+
+@layer components {
+  .btn-hover-style {
+    @apply rounded hover:bg-gray-300 py-1 px-[6px];
+  }
+}
