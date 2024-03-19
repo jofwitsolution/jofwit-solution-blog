@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
       <div className="px-2 sm:px-4 mt-3 space-y-4">
         <Link
           href={`/${post.user.username}/${post.title}`}
-          className="text-[25px] leading-[34px] md:text-[30px] hover:text-primary font-semibold md:leading-[40px]"
+          className="text-[18px] leading-[25px] sm:text-[25px] sm:leading-[34px] md:text-[30px] hover:text-primary font-semibold md:leading-[40px]"
         >
           {post.title}
         </Link>
@@ -53,7 +53,7 @@ const PostCard = ({ post }) => {
           ))}
         </div>
 
-        <div className="flex justify-between gap-4 items-center text-gray-500 text-[14px]">
+        <div className="flex max-xs:text-[12px] justify-between gap-4 items-center text-gray-500 text-[14px]">
           <div className="flex gap-4">
             <span className="flex gap-2 items-center btn-hover-style">
               <Image
@@ -62,7 +62,9 @@ const PostCard = ({ post }) => {
                 height={22}
                 alt="heart"
               />
-              <span>{post.likes.length} Likes</span>
+              <span>
+                {post.likes.length} <span className="max-sm:hidden">Likes</span>
+              </span>
             </span>
             <span className="flex gap-2 items-center btn-hover-style">
               <Image
@@ -71,7 +73,10 @@ const PostCard = ({ post }) => {
                 height={18}
                 alt="comment"
               />
-              <span>{post.comments.length} Comments</span>
+              <span>
+                {post.comments.length}{" "}
+                <span className="max-sm:hidden">Comments</span>
+              </span>
             </span>
           </div>
           <div className="flex gap-4 items-center">

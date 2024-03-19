@@ -13,6 +13,12 @@
   .max-width {
     @apply max-w-[1300px] mx-auto px-[24px];
   }
+  .navbar-h {
+    @apply h-[3.6rem];
+  }
+  .top-padding {
+    @apply pt-[3.6rem];
+  }
 }
 
 @layer components {
