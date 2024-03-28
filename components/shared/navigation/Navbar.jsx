@@ -34,6 +34,7 @@ const Navbar = () => {
                 width={50}
                 height={40}
                 alt="logo"
+                className="max-sm:w-[40px]"
               />{" "}
             </div>
             <div className="w-[35%] max-md:hidden">
@@ -58,7 +59,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {showSidebar && <Sidebar />}
+      {showSidebar && <Sidebar closeSidebar={() => setSidebar(!showSidebar)} />}
     </>
   );
 };

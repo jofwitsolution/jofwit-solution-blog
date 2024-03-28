@@ -3,11 +3,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinks, socialLinks } from "@/constants/links";
 
-const Sidebar = () => {
+const Sidebar = ({ closeSidebar }) => {
   return (
     <div className="fixed inset-0 bg-[rgba(0,0,0,0.6)] z-[2000] h-screen">
-      <div className="w-[80%] space-y-8 pb-4 bg-white h-screen">
-        <div className="w-full">
+      <div className="w-[80%] space-y-8 pt-2 pb-4 bg-white h-screen text-[1.2rem]">
+        <div className="w-full px-4">
+          <div className="mb-10 flex justify-between items-center">
+            <span className="text-[1.3rem] font-semibold">JS Community</span>
+            <span onClick={closeSidebar}>
+              <Image
+                src="/images/icons/close.svg"
+                width={25}
+                height={25}
+                alt="close"
+              />
+            </span>
+          </div>
           {navLinks.map((item) => (
             <Link
               key={item.label}
