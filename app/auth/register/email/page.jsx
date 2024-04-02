@@ -1,7 +1,11 @@
-import React from "react";
+import SignupForm from "@/components/form/SignupForm";
 
 const Page = () => {
-  return <div>Register with Email</div>;
+  return (
+    <div className="w-full flex justify-center py-[5rem]">
+      <SignupForm />
+    </div>
+  );
 };
 
 export default Page;

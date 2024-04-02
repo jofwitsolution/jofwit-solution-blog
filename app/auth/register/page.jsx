@@ -28,7 +28,9 @@ const Page = () => {
               height={25}
               alt="github"
             />
-            <span className="font-medium">GitHub</span>
+            <span className="font-medium text-[0.9rem]">
+              Sign up with GitHub
+            </span>
             <Image
               src="/images/icons/github.svg"
               width={25}
@@ -47,7 +49,9 @@ const Page = () => {
               height={25}
               alt="email"
             />
-            <span className="font-medium">Email</span>
+            <span className="font-medium text-[0.9rem]">
+              Sign up with Email
+            </span>
             <Image
               src="/images/icons/email.svg"
               width={25}
