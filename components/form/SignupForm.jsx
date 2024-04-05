@@ -1,35 +1,29 @@
 "use client";
 
+import { SignupSchema, validateFields } from "@/lib/validations";
 import React from "react";
-import { z } from "zod";
 
 const SignupForm = () => {
-  // Schema is the shape of an object
-  const SignupSchema = z.object({
-    name: z.string().min(3),
-    username: z.string(),
-    email: z.string().email(),
-    password: z.string().min(10),
-    confirmPassword: z.string().min(10),
-  });
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const values = {
-      name: e.target.name.value,
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
       username: e.target.username.value,
       email: e.target.email.value,
       password: e.target.password.value,
       confirmPassword: e.target.confirmPassword.value,
     };
 
-    console.log(values);
+    const validatedFields = validateFields(values, SignupSchema);
 
-    try {
-      const result = SignupSchema.parse(values);
-    } catch (error) {
-      console.log(error);
+    console.log(validatedFields);
+
+    if (validatedFields.success) {
+      console.log("Submitted");
+    } else {
+      console.log("Error! Not submitted");
     }
   };
 
@@ -44,17 +38,33 @@ const SignupForm = () => {
         className="w-full sm:w-[30rem] space-y-2"
       >
         <div className="w-full">
-          <label htmlFor="name" className="block mb-2">
-            Name <span className="text-red-500 text-[1rem]">*</span>
+          <label htmlFor="firstname" className="block mb-2">
+            First Name <span className="text-red-500 text-[1rem]">*</span>
           </label>
-          <input id="name" name="name" type="name" className="form-input" />
+          <input
+            id="firstname"
+            name="firstname"
+            type="text"
+            className="form-input"
+          />
+        </div>
+        <div className="w-full">
+          <label htmlFor="lastname" className="block mb-2">
+            Last Name <span className="text-red-500 text-[1rem]">*</span>
+          </label>
+          <input
+            id="lastname"
+            name="lastname"
+            type="text"
+            className="form-input"
+          />
         </div>
         <div className="w-full">
           <label htmlFor="username" className="block mb-2">
             Username <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            type="name"
+            type="text"
             id="username"
             name="username"
             className="form-input"
