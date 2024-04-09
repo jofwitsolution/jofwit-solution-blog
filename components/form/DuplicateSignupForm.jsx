@@ -4,27 +4,26 @@ import React, { useState } from "react";
 import { SignupSchema, validateFields } from "@/lib/validations";
 
 const SignupForm = () => {
-  const [formState, setFormState] = useState({
-    firstname: "",
-    lastname: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e) => {
-    // console.log(e.target.name, e.target.value);
-
-    const value = e.target.value;
-
-    setFormState((prevState) => ({ ...prevState, [e.target.name]: value }));
-  };
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const validatedFields = validateFields(formState, SignupSchema);
+    const values = {
+      firstname,
+      lastname,
+      username,
+      email,
+      password,
+      confirmPassword,
+    };
+
+    const validatedFields = validateFields(values, SignupSchema);
 
     // console.log(validatedFields);
 
@@ -50,8 +49,8 @@ const SignupForm = () => {
             First Name <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.firstname}
-            onChange={(e) => handleChange(e)}
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
             id="firstname"
             name="firstname"
             type="text"
@@ -63,8 +62,8 @@ const SignupForm = () => {
             Last Name <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.lastname}
-            onChange={(e) => handleChange(e)}
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
             id="lastname"
             name="lastname"
             type="text"
@@ -76,8 +75,8 @@ const SignupForm = () => {
             Username <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.username}
-            onChange={(e) => handleChange(e)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             type="text"
             id="username"
             name="username"
@@ -89,8 +88,8 @@ const SignupForm = () => {
             Email <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.email}
-            onChange={(e) => handleChange(e)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             id="email"
             name="email"
@@ -102,8 +101,8 @@ const SignupForm = () => {
             Password <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.password}
-            onChange={(e) => handleChange(e)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             id="password"
             name="password"
@@ -116,8 +115,8 @@ const SignupForm = () => {
             <span className="text-red-500 text-[1rem]">*</span>
           </label>
           <input
-            value={formState.confirmPassword}
-            onChange={(e) => handleChange(e)}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
             id="confirmPassword"
             name="confirmPassword"

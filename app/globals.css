@@ -29,4 +29,8 @@
   .btn-hover-style {
     @apply rounded hover:bg-gray-300 py-1 px-[6px];
   }
+
+  .auth-form-wrapper {
+    @apply shadow max-sm:w-full bg-white rounded-lg px-4 py-4 sm:px-8 sm:py-6;
+  }
 }
