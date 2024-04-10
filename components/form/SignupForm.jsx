@@ -1,9 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { SignupSchema, validateFields } from "@/lib/validations";
+import {
+  RefinedSignupSchema,
+  SignupSchema,
+  validateFields,
+} from "@/lib/validations";
+import FormMessage from "./FormMessage";
 
 const SignupForm = () => {
+  const [formMessage, setFormMessage] = useState({});
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
@@ -18,20 +24,42 @@ const SignupForm = () => {
 
     const value = e.target.value;
 
+    // spread operator
+    // Objects are copied by reference
+
+    // Method 1
+    // const newFormState = { ...formState };
+    // newFormState[e.target.name] = value;
+    // setFormState(newFormState);
+
+    // Method 2
+    // setFormState((prevState) => {
+    //   const newFormState = { ...prevState, [e.target.name]: value };
+    //   return newFormState;
+    // });
+
+    // Method 3
     setFormState((prevState) => ({ ...prevState, [e.target.name]: value }));
+    const validatedFields = validateFields(
+      { [e.target.name]: value },
+      SignupSchema.pick({
+        [e.target.name]: true,
+      })
+    );
+    setFormMessage(validatedFields);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const validatedFields = validateFields(formState, SignupSchema);
-
-    // console.log(validatedFields);
+    const validatedFields = validateFields(formState, RefinedSignupSchema);
 
     if (validatedFields.success) {
       console.log("Submitted");
+      // Submit the form to the server
     } else {
       console.log("Error! Not submitted");
+      setFormMessage(validatedFields);
     }
   };
 
@@ -57,6 +85,7 @@ const SignupForm = () => {
             type="text"
             className="form-input"
           />
+          <FormMessage name="firstname" formMessage={formMessage} />
         </div>
         <div className="w-full">
           <label htmlFor="lastname" className="block mb-2">
@@ -70,6 +99,7 @@ const SignupForm = () => {
             type="text"
             className="form-input"
           />
+          <FormMessage name="lastname" formMessage={formMessage} />
         </div>
         <div className="w-full">
           <label htmlFor="username" className="block mb-2">
@@ -83,6 +113,7 @@ const SignupForm = () => {
             name="username"
             className="form-input"
           />
+          <FormMessage name="username" formMessage={formMessage} />
         </div>
         <div className="w-full">
           <label htmlFor="email" className="block mb-2">
@@ -96,6 +127,7 @@ const SignupForm = () => {
             name="email"
             className="form-input"
           />
+          <FormMessage name="email" formMessage={formMessage} />
         </div>
         <div className="w-full">
           <label htmlFor="password" className="block mb-2">
@@ -109,6 +141,7 @@ const SignupForm = () => {
             name="password"
             className="form-input"
           />
+          <FormMessage name="password" formMessage={formMessage} />
         </div>
         <div className="w-full">
           <label htmlFor="confirmPassword" className="block mb-2">
@@ -123,6 +156,7 @@ const SignupForm = () => {
             name="confirmPassword"
             className="form-input"
           />
+          <FormMessage name="confirmPassword" formMessage={formMessage} />
         </div>
         <div className="!mt-4">
           <button
