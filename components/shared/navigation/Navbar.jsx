@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   const [showSidebar, setSidebar] = useState(false);
+  const currentUser = false;
 
   return (
     <>
@@ -45,17 +46,35 @@ const Navbar = () => {
             <Link href="/search" className="text-[27px] md:hidden">
               <FiSearch />
             </Link>
-            <Link href="/new" className="hidden md:inline-block">
-              <button className="border border-primary rounded-md py-2 px-3 hover:bg-primary hover:text-white text-primary font-medium hover:underline">
-                Create Post
-              </button>
-            </Link>
-            <span className="text-[27px] cursor-pointer">
-              <IoMdNotificationsOutline />
-            </span>
-            <span className="text-[36px] cursor-pointer">
-              <FaCircleUser />
-            </span>
+
+            {currentUser ? (
+              <>
+                <Link href="/new" className="hidden md:inline-block">
+                  <button className="border border-primary rounded-md py-2 px-3 hover:bg-primary hover:text-white text-primary font-medium hover:underline">
+                    Create Post
+                  </button>
+                </Link>
+                <span className="text-[27px] cursor-pointer">
+                  <IoMdNotificationsOutline />
+                </span>
+                <span className="text-[36px] cursor-pointer">
+                  <FaCircleUser />
+                </span>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login" className="hidden md:inline-block">
+                  <button className="rounded-md py-2 px-3 hover:bg-primary-100 hover:text-primary font-medium hover:underline">
+                    Log in
+                  </button>
+                </Link>
+                <Link href="/auth/register" className="hidden md:inline-block">
+                  <button className="border border-primary rounded-md py-2 px-3 hover:bg-primary hover:text-white text-primary font-medium hover:underline">
+                    Create account
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

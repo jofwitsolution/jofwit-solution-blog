@@ -20,6 +20,7 @@ module.exports = {
         "primary-100": "#cfdff5",
         danger: "#f52626",
         "dark-grey": "#121212",
+        "light-border": "rgba(0,0,0,0.15)",
       },
     },
   },

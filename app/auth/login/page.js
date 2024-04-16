@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import LoginForm from "@/components/form/LoginForm";
 
 const Page = () => {
   return (
@@ -31,7 +32,7 @@ const Page = () => {
               alt="github"
             />
             <span className="font-medium text-[0.9rem]">
-              Sign up with GitHub
+              Continue with GitHub
             </span>
             <Image
               src="/images/icons/github.svg"
@@ -41,30 +42,19 @@ const Page = () => {
               className="invisible"
             />
           </div>
-          <Link
-            href="/auth/register/email"
-            className="w-full flex cursor-pointer hover:bg-slate-200 justify-between gap-8 border border-[rgba(0,0,0,0.15)] p-4 rounded-md"
-          >
-            <Image
-              src="/images/icons/email.svg"
-              width={25}
-              height={25}
-              alt="email"
-            />
-            <span className="font-medium text-[0.9rem]">
-              Sign up with Email
-            </span>
-            <Image
-              src="/images/icons/email.svg"
-              width={25}
-              height={25}
-              alt="email"
-              className="invisible"
-            />
-          </Link>
+
+          <div className="w-full flex gap-4 items-center my-4">
+            <div className="border-b w-full border-light-border" />
+            <span>OR</span>
+            <div className="border-b w-full border-light-border" />
+          </div>
+
+          <div>
+            <LoginForm />
+          </div>
 
           <p className="my-6 max-w-[25rem] mx-auto text-center">
-            By signing up, you are agreeing to our{" "}
+            By signing in, you are agreeing to our{" "}
             <Link href="/privacy" className="text-blue-400 hover:underline">
               privacy policy
             </Link>
@@ -82,12 +72,15 @@ const Page = () => {
             .
           </p>
 
-          <div className="border-b w-full border-[rgba(0,0,0,0.15)] mb-6" />
+          <div className="border-b w-full border-light-border mb-6" />
 
           <p className="text-center">
-            Already have an account?{" "}
-            <Link href="/auth/login" className="text-blue-400 hover:underline">
-              Log in
+            New to JS Community?{" "}
+            <Link
+              href="/auth/register"
+              className="text-blue-400 hover:underline"
+            >
+              Create account
             </Link>
             .
           </p>
