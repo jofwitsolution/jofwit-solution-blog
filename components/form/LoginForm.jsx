@@ -32,6 +32,16 @@ const LoginForm = () => {
     if (validatedFields.success) {
       console.log("Submitted");
       // Submit the form to the server
+      // axios
+      // fetch API
+
+      // Asynchronous Operatiion
+      // 1. then and catch
+      fetch("/api/dev-v1/users", {
+        method: "POST",
+      })
+        .then((res) => res.json().then((data) => console.log(data)))
+        .catch((error) => console.log(error));
     } else {
       console.log("Error! Not submitted");
       setFormMessage(validatedFields);
